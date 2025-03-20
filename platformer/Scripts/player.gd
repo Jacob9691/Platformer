@@ -3,7 +3,7 @@ extends CharacterBody2D
 # Movement variables
 @export var speed = 400
 @export var jump_force = -600
-@export var gravity = 1000
+@export var gravity = 1250
 @export var dash_speed = 800
 @export var dash_time = 0.2
 

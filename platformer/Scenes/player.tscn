@@ -1,18 +1,146 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccja54ytm8atn"]
+[gd_scene load_steps=27 format=3 uid="uid://ccja54ytm8atn"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fwde4"]
-[ext_resource type="Texture2D" uid="uid://bb86nnbe1g07v" path="res://icon.svg" id="2_jhir2"]
+[ext_resource type="Texture2D" uid="uid://d4mpym2avbhdd" path="res://Assets/Adventurer/Individual Sprites/adventurer-jump-00.png" id="2_8cehd"]
+[ext_resource type="Texture2D" uid="uid://djxwhu1tt43nv" path="res://Assets/Adventurer/Individual Sprites/adventurer-crouch-00.png" id="2_pkoha"]
+[ext_resource type="Texture2D" uid="uid://dcmu05aow0rlf" path="res://Assets/Adventurer/Individual Sprites/adventurer-run-00.png" id="2_qffjt"]
+[ext_resource type="Texture2D" uid="uid://cq7uvcvcoynro" path="res://Assets/Adventurer/Individual Sprites/adventurer-jump-01.png" id="3_2x0qi"]
+[ext_resource type="Texture2D" uid="uid://doa2jbn7ic0vt" path="res://Assets/Adventurer/Individual Sprites/adventurer-crouch-01.png" id="3_d70yd"]
+[ext_resource type="Texture2D" uid="uid://b2cb387kv8ig5" path="res://Assets/Adventurer/Individual Sprites/adventurer-run-01.png" id="3_mwwyy"]
+[ext_resource type="Texture2D" uid="uid://1iayfiblerbg" path="res://Assets/Adventurer/Individual Sprites/adventurer-run-02.png" id="4_5gd7v"]
+[ext_resource type="Texture2D" uid="uid://bpeuhdg8ivqdh" path="res://Assets/Adventurer/Individual Sprites/adventurer-jump-02.png" id="4_i83gf"]
+[ext_resource type="Texture2D" uid="uid://dl8bot5ogq04q" path="res://Assets/Adventurer/Individual Sprites/adventurer-crouch-02.png" id="4_tlc04"]
+[ext_resource type="Texture2D" uid="uid://3jy35wdbfoq0" path="res://Assets/Adventurer/Individual Sprites/adventurer-jump-03.png" id="5_5cliw"]
+[ext_resource type="Texture2D" uid="uid://dnby5f43b38ew" path="res://Assets/Adventurer/Individual Sprites/adventurer-crouch-03.png" id="5_c803h"]
+[ext_resource type="Texture2D" uid="uid://bv7y4pspqemop" path="res://Assets/Adventurer/Individual Sprites/adventurer-run-03.png" id="5_g87l7"]
+[ext_resource type="Texture2D" uid="uid://c8mh1lufia0ed" path="res://Assets/Adventurer/Individual Sprites/adventurer-run-04.png" id="6_2enoi"]
+[ext_resource type="Texture2D" uid="uid://cmuqkohc3fiqn" path="res://Assets/Adventurer/Individual Sprites/adventurer-fall-00.png" id="6_v06js"]
+[ext_resource type="Texture2D" uid="uid://hvnvsoxc874y" path="res://Assets/Adventurer/Individual Sprites/adventurer-smrslt-00.png" id="6_xpmdg"]
+[ext_resource type="Texture2D" uid="uid://cq0ijo3wjr5eg" path="res://Assets/Adventurer/Individual Sprites/adventurer-smrslt-01.png" id="7_0jk7n"]
+[ext_resource type="Texture2D" uid="uid://dxpdb6xmemxfc" path="res://Assets/Adventurer/Individual Sprites/adventurer-run-05.png" id="7_8bmow"]
+[ext_resource type="Texture2D" uid="uid://1e1e6yj6oqar" path="res://Assets/Adventurer/Individual Sprites/adventurer-fall-01.png" id="7_bjhan"]
+[ext_resource type="Texture2D" uid="uid://ds7entovix6dn" path="res://Assets/Adventurer/Individual Sprites/adventurer-smrslt-02.png" id="8_3g8h7"]
+[ext_resource type="Texture2D" uid="uid://brw055m2nixml" path="res://Assets/Adventurer/Individual Sprites/adventurer-idle-01.png" id="8_w6ghq"]
+[ext_resource type="Texture2D" uid="uid://c6j4phycgshkc" path="res://Assets/Adventurer/Individual Sprites/adventurer-smrslt-03.png" id="9_e0brw"]
+[ext_resource type="Texture2D" uid="uid://cpgvaqeli6w28" path="res://Assets/Adventurer/Individual Sprites/adventurer-idle-02.png" id="9_wnfwe"]
+[ext_resource type="Texture2D" uid="uid://ch1cj570hpfm3" path="res://Assets/Adventurer/Individual Sprites/adventurer-idle-03.png" id="10_jbmuq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngvus"]
-size = Vector2(116.5, 119)
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxyrg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pkoha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_d70yd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tlc04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_c803h")
+}],
+"loop": true,
+"name": &"crouching",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v06js")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bjhan")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_w6ghq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wnfwe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_jbmuq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8cehd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2x0qi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_i83gf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5cliw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5cliw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xpmdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0jk7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_3g8h7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e0brw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xpmdg")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qffjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mwwyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5gd7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g87l7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2enoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8bmow")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd0w2"]
+radius = 37.0
+height = 116.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fwde4")
 
-[node name="PlayerSprite" type="Sprite2D" parent="."]
-position = Vector2(68, -6)
-texture = ExtResource("2_jhir2")
+[node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dxyrg")
+animation = &"running"
+autoplay = "idle"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
-position = Vector2(67.75, -5.5)
-shape = SubResource("RectangleShape2D_ngvus")
+position = Vector2(7, 13)
+shape = SubResource("CapsuleShape2D_wd0w2")
