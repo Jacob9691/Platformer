@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ccja54ytm8atn"]
+[gd_scene load_steps=32 format=3 uid="uid://ccja54ytm8atn"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fwde4"]
 [ext_resource type="Texture2D" uid="uid://d4mpym2avbhdd" path="res://Assets/Adventurer/Individual Sprites/adventurer-jump-00.png" id="2_8cehd"]
@@ -24,6 +24,11 @@
 [ext_resource type="Texture2D" uid="uid://c6j4phycgshkc" path="res://Assets/Adventurer/Individual Sprites/adventurer-smrslt-03.png" id="9_e0brw"]
 [ext_resource type="Texture2D" uid="uid://cpgvaqeli6w28" path="res://Assets/Adventurer/Individual Sprites/adventurer-idle-02.png" id="9_wnfwe"]
 [ext_resource type="Texture2D" uid="uid://ch1cj570hpfm3" path="res://Assets/Adventurer/Individual Sprites/adventurer-idle-03.png" id="10_jbmuq"]
+[ext_resource type="Texture2D" uid="uid://daw22ug2flsyd" path="res://Assets/Adventurer/Individual Sprites/adventurer-slide-00.png" id="25_7cs4n"]
+[ext_resource type="Texture2D" uid="uid://b5mri2yvdkcnn" path="res://Assets/Adventurer/Individual Sprites/adventurer-slide-01.png" id="26_b3fuo"]
+[ext_resource type="Texture2D" uid="uid://xhbmxw0vf5wi" path="res://Assets/Adventurer/Individual Sprites/adventurer-stand-00.png" id="27_6ew6s"]
+[ext_resource type="Texture2D" uid="uid://d2iwc0ssn6twd" path="res://Assets/Adventurer/Individual Sprites/adventurer-stand-01.png" id="28_h7akr"]
+[ext_resource type="Texture2D" uid="uid://p6o0ay8527d" path="res://Assets/Adventurer/Individual Sprites/adventurer-stand-02.png" id="29_le81r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dxyrg"]
 animations = [{
@@ -102,7 +107,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -126,6 +131,26 @@ animations = [{
 "loop": true,
 "name": &"running",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_7cs4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_b3fuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_6ew6s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_h7akr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_le81r")
+}],
+"loop": false,
+"name": &"slide",
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wd0w2"]
@@ -136,10 +161,13 @@ height = 116.0
 script = ExtResource("1_fwde4")
 
 [node name="PlayerAnimatedSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dxyrg")
-animation = &"running"
+animation = &"slide"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.771624
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(7, 13)

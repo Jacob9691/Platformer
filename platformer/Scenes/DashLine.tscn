@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwmm20on8ey8l"]
+
+[ext_resource type="Script" path="res://Scripts/dash_line.gd" id="1_sc0h8"]
+
+[node name="DashLine" type="Line2D"]
+script = ExtResource("1_sc0h8")
