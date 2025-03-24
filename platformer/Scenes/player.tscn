@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccja54ytm8atn"]
+[gd_scene load_steps=33 format=3 uid="uid://ccja54ytm8atn"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fwde4"]
 [ext_resource type="Texture2D" uid="uid://d4mpym2avbhdd" path="res://Assets/Adventurer/Individual Sprites/adventurer-jump-00.png" id="2_8cehd"]
@@ -157,6 +157,10 @@ animations = [{
 radius = 37.0
 height = 116.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agkk7"]
+radius = 37.0
+height = 116.0
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_fwde4")
 
@@ -164,11 +168,19 @@ script = ExtResource("1_fwde4")
 unique_name_in_owner = true
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_dxyrg")
-animation = &"slide"
+animation = &"crouching"
 autoplay = "idle"
-frame = 2
-frame_progress = 0.771624
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(7, 13)
 shape = SubResource("CapsuleShape2D_wd0w2")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="HitBoxCollision" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(7, 13)
+shape = SubResource("CapsuleShape2D_agkk7")
+debug_color = Color(0.982869, 0, 0.358277, 0.42)
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

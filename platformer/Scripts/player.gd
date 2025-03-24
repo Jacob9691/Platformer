@@ -12,14 +12,19 @@ var is_dashing = false
 var dash_timer = 0.0
 var can_dash = true
 var dash_direction = Vector2.ZERO
+var is_dead = false
 
 # Load scenes
 var Trail = preload("res://Scenes/DashLine.tscn")
+var death_particles = preload("res://Scenes/death_particles.tscn")
 
 func _ready():
 	pass
 
 func _physics_process(delta):
+	if is_dead:
+		return
+	
 	if not is_dashing:
 		handle_gravity(delta)
 		handle_movement()
@@ -99,3 +104,11 @@ func play_animation():
 		
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		%PlayerAnimatedSprite.play("jump")
+
+func _on_hit_box_body_entered(_body) -> void:
+	is_dead = true
+	var death = death_particles.instantiate()
+	death.position = position
+	get_parent().add_child(death)
+	await get_tree().create_timer(0.5).timeout
+	get_tree().reload_current_scene()
