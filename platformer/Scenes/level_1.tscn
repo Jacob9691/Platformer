@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://q633goxkteyp"]
+[gd_scene load_steps=7 format=4 uid="uid://q633goxkteyp"]
 
-[ext_resource type="Texture2D" uid="uid://b2px4oaredv0u" path="res://Assets/Celeste Tilesets, Step-by-Step — Aran P. Ink_files/celeste_forsaken-city_large_7.png" id="1_oqniu"]
-[ext_resource type="PackedScene" uid="uid://ccja54ytm8atn" path="res://Scenes/player.tscn" id="2_jpb0e"]
-[ext_resource type="PackedScene" uid="uid://bin4yijssplok" path="res://Scenes/next_level.tscn" id="3_4ht36"]
+[ext_resource type="Texture2D" uid="uid://b2px4oaredv0u" path="res://Assets/Celeste Tilesets, Step-by-Step — Aran P. Ink_files/celeste_forsaken-city_large_7.png" id="1_lrypq"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_punvj"]
+[ext_resource type="PackedScene" uid="uid://ccja54ytm8atn" path="res://Scenes/player.tscn" id="2_fmv2x"]
+[ext_resource type="PackedScene" uid="uid://bin4yijssplok" path="res://Scenes/next_level.tscn" id="3_bgxxa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rplu0"]
-texture = ExtResource("1_oqniu")
+texture = ExtResource("1_lrypq")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -8291,8 +8292,9 @@ physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_rplu0")
 
-[node name="Game" type="Node2D"]
+[node name="Level_1" type="Node2D"]
 position = Vector2(14, 661)
+script = ExtResource("1_punvj")
 
 [node name="Map" type="Node2D" parent="."]
 position = Vector2(52, 474)
@@ -8305,8 +8307,16 @@ tile_set = SubResource("TileSet_fwjb7")
 position = Vector2(1138, -13)
 zoom = Vector2(0.5, 0.5)
 
-[node name="Player" parent="." instance=ExtResource("2_jpb0e")]
+[node name="Player" parent="." instance=ExtResource("2_fmv2x")]
 position = Vector2(117, 477)
 
-[node name="NextLevel" parent="." instance=ExtResource("3_4ht36")]
+[node name="NextLevel" parent="." instance=ExtResource("3_bgxxa")]
 position = Vector2(2373, 50)
+
+[node name="StartPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(117, 477)
+
+[node name="EndPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(2194, 40)

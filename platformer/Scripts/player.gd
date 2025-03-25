@@ -109,6 +109,7 @@ func _on_hit_box_body_entered(_body) -> void:
 	is_dead = true
 	var death = death_particles.instantiate()
 	death.position = position
+	death.emitting = true
 	get_parent().add_child(death)
 	await get_tree().create_timer(0.5).timeout
 	get_tree().reload_current_scene()
