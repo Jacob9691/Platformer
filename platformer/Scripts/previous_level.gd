@@ -15,9 +15,10 @@ func load_previous_scene() -> void:
 	previous_scene = load(previous_scene_path)
 
 func _on_body_entered(body: Node2D) -> void:
-	Global.came_from_previous_level = true
-	
-	if previous_scene:
-		get_tree().change_scene_to_packed(previous_scene)
-	else:
-		print("Previous scene not loaded!")
+	if body.name == "Player":
+		Global.came_from_previous_level = true
+		
+		if previous_scene:
+			get_tree().change_scene_to_packed(previous_scene)
+		else:
+			print("Previous scene not loaded!")

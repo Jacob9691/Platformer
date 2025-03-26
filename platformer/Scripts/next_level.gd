@@ -15,9 +15,10 @@ func preload_next_scene() -> void:
 	next_scene = load(next_scene_path)
 
 func _on_body_entered(body: Node2D) -> void:
-	Global.came_from_previous_level = false
-	
-	if next_scene:
-		get_tree().change_scene_to_packed(next_scene)
-	else:
-		print("Next scene not preloaded!")
+	if body.name == "Player":
+		Global.came_from_previous_level = false
+		
+		if next_scene:
+			get_tree().change_scene_to_packed(next_scene)
+		else:
+			print("Next scene not preloaded!")
