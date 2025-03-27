@@ -1,26 +1,24 @@
 extends PathFollow2D
 
-# Variables for speed and pause duration
-@export var speed: float = 0.9
-@export var pause_duration: float = 0.5
+@export var speed: float = 1.5
 
-# Internal state variables
-var is_paused: bool = false
-var pause_timer: float = 0.0
 var direction: int = 1
 
 func _ready() -> void:
 	progress_ratio = 0.0
 
 func _process(delta: float):
-	if is_paused:
-		pause_timer -= delta
-		if pause_timer <= 0:
-			is_paused = false
-	else:
-		if progress_ratio == 0.9:
-			is_paused = true
-			pause_timer = pause_duration
-			direction *= -1
-		else:
-			progress_ratio += direction * speed * delta
+	progress_ratio += direction * speed * delta
+	
+	if progress_ratio >= 1.0:
+		progress_ratio = 1.0
+		direction *= -1
+	elif progress_ratio <= 0.0:
+		progress_ratio = 0.0
+		direction *= -1
+		
+
+
+func _on_spike_ball_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "Player":
+		body.die()

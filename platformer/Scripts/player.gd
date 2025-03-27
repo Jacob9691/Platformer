@@ -105,7 +105,7 @@ func play_animation():
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		%PlayerAnimatedSprite.play("jump")
 
-func _on_hit_box_body_entered(_body) -> void:
+func die():
 	is_dead = true
 	var death = death_particles.instantiate()
 	death.position = position
@@ -113,3 +113,6 @@ func _on_hit_box_body_entered(_body) -> void:
 	get_parent().add_child(death)
 	await get_tree().create_timer(0.5).timeout
 	get_tree().reload_current_scene()
+
+func _on_hit_box_body_entered(_body) -> void:
+	die()

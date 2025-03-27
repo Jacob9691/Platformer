@@ -5,11 +5,12 @@
 
 [sub_resource type="Curve2D" id="Curve2D_uotj8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, -2, 413)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -12, 0, 0, 0, 0, 1, 729)
 }
 point_count = 2
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ygxj1"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ifqil"]
+radius = 41.9762
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hpb0"]
 atlas = ExtResource("1_d4jm1")
@@ -38,18 +39,23 @@ position = Vector2(-16, -11)
 curve = SubResource("Curve2D_uotj8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
-position = Vector2(0, -1)
-rotation = 1.57563
+position = Vector2(-2, -12)
+rotation = 1.56675
+loop = false
 script = ExtResource("1_2o2ij")
 
-[node name="Area2D" type="Area2D" parent="PathFollow2D"]
+[node name="SpikeBallArea2D" type="Area2D" parent="PathFollow2D"]
+collision_layer = 2
 
-[node name="SpikeBallCollision" type="CollisionShape2D" parent="PathFollow2D/Area2D"]
-shape = SubResource("CircleShape2D_ygxj1")
+[node name="SpikeBallCollision" type="CollisionShape2D" parent="PathFollow2D/SpikeBallArea2D"]
+shape = SubResource("CircleShape2D_ifqil")
+debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="SpikeBallAnimatedSprite" type="AnimatedSprite2D" parent="PathFollow2D/Area2D"]
+[node name="SpikeBallAnimatedSprite" type="AnimatedSprite2D" parent="PathFollow2D/SpikeBallArea2D"]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_pbwjy")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.660207
+
+[connection signal="body_entered" from="PathFollow2D/SpikeBallArea2D" to="PathFollow2D" method="_on_spike_ball_area_2d_body_entered"]

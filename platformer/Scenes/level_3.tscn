@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://c1qckbsmbarof"]
+[gd_scene load_steps=10 format=4 uid="uid://c1qckbsmbarof"]
 
 [ext_resource type="Script" path="res://Scripts/game.gd" id="1_0u8mu"]
 [ext_resource type="Texture2D" uid="uid://b2px4oaredv0u" path="res://Assets/Celeste Tilesets, Step-by-Step — Aran P. Ink_files/celeste_forsaken-city_large_7.png" id="2_nd1yu"]
 [ext_resource type="PackedScene" uid="uid://ccja54ytm8atn" path="res://Scenes/player.tscn" id="3_2io76"]
+[ext_resource type="PackedScene" uid="uid://yvqxtfrxx5ei" path="res://Scenes/pause_menu.tscn" id="3_v5c3c"]
 [ext_resource type="PackedScene" uid="uid://bin4yijssplok" path="res://Scenes/next_level.tscn" id="4_5bj14"]
 [ext_resource type="PackedScene" uid="uid://cn35a26t5itcx" path="res://Scenes/previous_level.tscn" id="5_tg4yt"]
 [ext_resource type="PackedScene" uid="uid://pg2lqp3pcast" path="res://Scenes/spike_ball.tscn" id="6_ckhp2"]
@@ -8538,6 +8539,13 @@ tile_set = SubResource("TileSet_fwjb7")
 position = Vector2(1138, -13)
 zoom = Vector2(0.5, 0.5)
 
+[node name="PauseMenu" parent="Camera2D" instance=ExtResource("3_v5c3c")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
 [node name="Player" parent="." instance=ExtResource("3_2io76")]
 unique_name_in_owner = true
 position = Vector2(2248, -427)
@@ -8557,4 +8565,7 @@ unique_name_in_owner = true
 position = Vector2(26, -422)
 
 [node name="SpikeBall" parent="." instance=ExtResource("6_ckhp2")]
-position = Vector2(1251, -530)
+position = Vector2(1293, -590)
+
+[node name="SpikeBall2" parent="." instance=ExtResource("6_ckhp2")]
+position = Vector2(540, -581)
